@@ -1,0 +1,72 @@
+<!-- 
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GitLab Issue Creation</title>
+    <!-- Use Bootstrap -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/lodash/dist/lodash.min.js"></script>
+    <script type="text/javascript" src="bower_components/restangular/dist/restangular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="maincontroller.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+   
+  <body ng-app="GitLabIssueCreation" ng-controller="MainController">
+    
+  <div class="row">  
+    <div class="col-md-3"></div>
+    <div class="col-md-6"> 
+      <div style="text-align:center;"><br><H1>GitLab Issue Creation</H1><br></div>  
+      <div> <small> Fields marked with * are mandatory</small><br> </div>  
+      <form name="form" role="form" class="ng-scope ng-invalid ng-invalid-required ng-dirty" ng-submit="startSession()">
+                <div class="form-group">
+			  		<div>
+			  			<div>* <label>Gitlab login id:</label></div>
+			  			<div><input class="form-control" type="text" name="login_id" size="50" ng-model="data.login_id" placeholder="GitLab account login mail id" required ng-disabled="creationInProgress" ng-change="updateUserName()"></div>
+			  		</div><br>
+			  		<div>
+			  			<div>* <label>GitLab Password:</label></div>
+			  			<div><input class="form-control" type="password" name="passwd" size="50" ng-model="data.passwd" placeholder="GitLab account password" required ng-disabled="creationInProgress"></div>
+			  		</div><br>
+			  		<div>
+			  			<div>* <label>Gitlab User Name:</label></div>
+			  			<div><input class="form-control" type="text" name="user_name" size="50" ng-model="data.user_name" placeholder="GitLab account user name. Will be populated from Gitlab login id, but can be changed" required ng-disabled="creationInProgress"></div>
+			  		</div><br>
+                    <div>
+			  		    <div>* <label>Project Name:</label></div>
+			  			<div><input class="form-control" type="text" name="project_name" size="50" ng-model="data.project_name" placeholder="GitLab Project Name" required ng-disabled="creationInProgress"></div>
+			  		</div><br>
+			  		<div>
+			  			<div>* <label>Issue Title:</label></div>
+			  		    <div><input class="form-control" type="text" name="title" size="50" ng-model="data.title" placeholder="Give Title to an issue" required ng-disabled="creationInProgress"></div>			  		     
+			  		</div><br>
+			  		<div>
+			  			<div>* <label>Issue Description:</label></div>
+			  		    <div><input class="form-control" type="text" name="issue_description" size="50" ng-model="data.issue_description" placeholder="Give a description to an issue" required ng-disabled="creationInProgress"></div>			  		     
+			  		</div><br>
+			  		<div>
+			  			<div>* <label>Milestone:</label></div>
+			  		    <div><input class="form-control" type="text" name="milestone" size="50" ng-model="data.milestone" placeholder="If the milestone already exists, created issue will be linked to that. Otherwise a new milestone is created." required ng-disabled="creationInProgress"></div>			  		     
+			  		</div><br>
+			  		<div>
+			  			<div>* <label>Labels:</label></div>
+			  			<div><input class="form-control" type="text" name="labels" size="50" ng-model="data.labels" required placeholder="Comma-separated label names for an issue" ng-disabled="creationInProgress"></div>
+			  		</div><br><br>
+			  		<div style="text-align:center;">
+			  					<button class="btn btn-primary" ng-disabled="creationInProgress">Create Issue</button><br>
+			  					<label ng-show="showIssueCreationCompleteMsg">{{issueCreationCompleteMsg}} ---> </label> <label ng-show="urlToCreatedIssue"><a ng-href="{{urlToCreatedIssue}}">{{urlToCreatedIssue}}</a></label><br>
+			  					<label ng-show="creationInProgress && !showProgressMessage">Creation in progress...</label><br>
+			  		</div>			  		
+		  		</div>
+	  </form>
+    </div> 
+    <div class="col-md-3"> </div>
+  </div>
+  </body>
+</html>

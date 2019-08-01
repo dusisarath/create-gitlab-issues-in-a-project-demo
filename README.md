@@ -1,1 +1,3 @@
-# create-gitlab-issues-in-a-project-demo
+# create-gitlab-issues
+
+Creates Gitlab Issues

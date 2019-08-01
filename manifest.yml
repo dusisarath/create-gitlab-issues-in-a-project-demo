@@ -1,0 +1,8 @@
+---
+applications:
+- name: create-gitlab-issues
+  buildpack: sdk-for-nodejs
+  memory: 1G
+  instances: 1
+  path: .
+  command: node gitlab-issue-creator.js

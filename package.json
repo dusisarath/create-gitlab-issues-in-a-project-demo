@@ -1,0 +1,26 @@
+{
+  "name": "create-gitlab-issues",
+  "version": "0.1.0",
+  "description": "NodePlusAngularJS",
+  "main": "gitlab-issue-creator.js",
+  "scripts": {
+    "start": "node gitlab-issue-creator.js"
+  },
+  "repository": "",
+  "keywords": [
+    "node.js",
+    "eclipse",
+    "nodeclipse"
+  ],
+  "author": "",
+  "dependencies": {
+    "express": "^4.14.0",
+    "serve-static": "~1.7.0",
+    "path":"0.12.7",
+    "request": "2.72.x",
+    "body-parser": "1.15.2"
+  },
+  "engines": {
+		"node": "4.x"
+	} 
+}
